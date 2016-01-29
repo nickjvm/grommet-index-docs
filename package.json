@@ -1,0 +1,62 @@
+{
+  "name": "grommet-index-docs",
+  "version": "0.4.0",
+  "main": "src/index.js",
+  "description": "Website for Grommet Index.",
+  "authors": [
+    "Alan Souza",
+    "Bryan Jacquot",
+    "Chris Carlozzi",
+    "Eric Soderberg"
+  ],
+  "homepage": "http://grommet.io",
+  "bugs": "https://github.com/grommet/grommet-index-docs/issues",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/grommet/grommet-index-docs.git"
+  },
+  "dependencies": {
+    "compression": "^1.4.4",
+    "cookie-parser": "^1.3.4",
+    "ejs": "^0.8.5",
+    "enhanced-require": "^0.4.2",
+    "express": "^4.10.6",
+    "grommet": "https://github.com/grommet/grommet/tarball/stable",
+    "grommet-index": "https://github.com/grommet/grommet-index/tarball/stable",
+    "gulp": "^3.9.0",
+    "gulp-nodemon": "^2.0.3",
+    "highlight.js": "^8.8.0",
+    "history": "^1.17.0",
+    "json-stringify-pretty-compact": "^1.0.1",
+    "jsx-to-string": "^0.2.6",
+    "morgan": "^1.5.0",
+    "react": "^0.14.1",
+    "react-dom": "^0.14.0",
+    "react-router": "^1.0.0-rc3",
+    "throng": "^1.0.1"
+  },
+  "devDependencies": {
+    "babel-loader": "^6.2.0",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "del": "^2.0.2",
+    "gulp-git": "^1.2.3",
+    "gulp-cssnano": "^2.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-sass": "^2.0.4",
+    "highlight-loader": "^0.4.5",
+    "html-jsx-loader": "^0.1.12",
+    "imports-loader": "^0.6.3",
+    "mkdirp": "^0.5.1",
+    "webpack": "^1.9.11",
+    "webpack-stream": "^2.0.0",
+    "yargs": "^3.30.0"
+  },
+  "scripts": {
+    "build": "gulp dist",
+    "start": "node server/server.js"
+  }
+}
