@@ -9,7 +9,7 @@ import IndexHeaderDoc from './components/IndexHeaderDoc';
 
 export default props => {
   return (
-    <Route path="/index-docs" component={Docs}>
+    <Route path="/" component={Docs}>
       <IndexRoute component={Home} />
       <Route path='index' component={IndexDoc} />
       <Route path='index-header' component={IndexHeaderDoc} />

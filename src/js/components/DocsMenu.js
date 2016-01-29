@@ -16,8 +16,8 @@ export default class DocsMenu extends Component {
   render () {
     return (
       <Menu direction={this.props.direction} align="start" justify="between" primary={true}>
-        {this._renderLink("/index-docs/index", "Index")}
-        {this._renderLink("/index-docs/index-header", "IndexHeader")}
+        {this._renderLink("/index", "Index")}
+        {this._renderLink("/index-header", "IndexHeader")}
       </Menu>
     );
   }

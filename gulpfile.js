@@ -9,11 +9,15 @@ var http = require('http');
 
 var opts = {
   base: '.',
-  publicPath: 'index-docs',
+  publicPath: 'docs/grommet-index',
   dist: path.resolve(__dirname, 'dist/'),
   copyAssets: [
     'src/index.html',
-    'src/robots.txt'
+    'src/robots.txt',
+    {
+      asset: 'node_modules/grommet/img/**',
+      dist: 'dist/img/'
+    }
   ],
   scssAssets: ['src/scss/**/*.scss'],
   jsAssets: ['src/**/*.js'],
@@ -35,6 +39,11 @@ var opts = {
       ]
     }
   },
+  sync: {
+    hostname: 'grommet.us.rdlabs.hpecorp.net',
+    username: 'ligo',
+    remoteDestination: '/var/www/html/docs/grommet-index-docs/dist'
+  },
   devServerPort: 8019,
   devServerDisableHot: true,
   // devServerHost: "0.0.0.0",
@@ -45,8 +54,7 @@ var opts = {
   },
   devPreprocess: [
     'set-webpack-alias', 'watch-css'
-  ],
-  distPreprocess: []
+  ]
 };
 
 var host = opts.devServerHost ? opts.devServerHost : 'localhost';
