@@ -47,9 +47,9 @@ export default class Docs extends Component {
   _renderTitle () {
     return (
       <Title responsive={false}>
-        <Link to="/index-docs">
+        <Link to="/">
           <Box align="center" direction="row">
-            <GrommetLogo />
+            <GrommetLogo /> Index
           </Box>
         </Link>
       </Title>

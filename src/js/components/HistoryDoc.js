@@ -4,11 +4,11 @@ import React, { Component } from 'react';
 import TBD from 'grommet/components/TBD';
 import DocsArticle from './DocsArticle';
 
-export default class IndexHeaderDoc extends Component {
+export default class HistoryDoc extends Component {
 
   render () {
     return (
-      <DocsArticle title="IndexHeader" colorIndex="neutral-3">
+      <DocsArticle title="History" colorIndex="neutral-3">
 
         <TBD>TBD</TBD>
 
