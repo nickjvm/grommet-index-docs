@@ -3,9 +3,10 @@
 var argv = require('yargs').argv;
 var gulp = require('gulp');
 var path = require('path');
-var fs = require('fs');
+var del = require('del');
+var git = require('gulp-git');
+var mkdirp = require('mkdirp');
 var devGulpTasks = require('grommet/utils/gulp/gulp-tasks');
-var http = require('http');
 
 var opts = {
   base: '.',
@@ -53,11 +54,9 @@ var opts = {
     'grommet': path.resolve(__dirname, '../grommet/src/js')
   },
   devPreprocess: [
-    'set-webpack-alias', 'watch-css'
+    'set-webpack-alias'
   ]
 };
-
-var host = opts.devServerHost ? opts.devServerHost : 'localhost';
 
 gulp.task('set-webpack-alias', function () {
   if (opts.alias && argv.useAlias) {
@@ -66,31 +65,74 @@ gulp.task('set-webpack-alias', function () {
   }
 });
 
-gulp.task('watch-css', function() {
-  if (opts.webpack.resolve.alias) {
-    var watcher = gulp.watch(
-      path.resolve(__dirname, '../grommet/src/scss/**/*.scss'),
-      ['dist-css']
-    );
-
-    watcher.on('change', function() {
-      //notify the webpack dev server that a change happened
-      http.get(
-        'http://' + host + ':' + opts.devServerPort + '/invalid'
-      );
-    });
-  }
+gulp.task('release:createTmp', function(done) {
+  del.sync(['./tmp']);
+  mkdirp('./tmp', function(err) {
+    if (err) {
+      throw err;
+    }
+    done();
+  });
 });
 
+gulp.task('release:heroku', ['dist', 'release:createTmp'], function(done) {
+  if (process.env.CI) {
+    git.clone('https://' + process.env.GH_TOKEN + '@github.com/grommet/grommet-index-docs.git',
+      {
+        cwd: './tmp/'
+      },
+      function(err) {
+        if (err) {
+          throw err;
+        }
 
-var nodeModules = {};
-fs.readdirSync('node_modules')
-  .filter(function(x) {
-    return ['.bin'].indexOf(x) === -1;
-  })
-  .forEach(function(mod) {
-    nodeModules[mod] = 'commonjs ' + mod;
-  });
+        process.chdir('./tmp/grommet-index-docs');
+        git.checkout('heroku', function(err) {
+          if (err) {
+            throw err;
+          }
 
+          gulp.src([
+            '../../**',
+            '!../../.gitignore',
+            '!../../.travis.yml'])
+          .pipe(gulp.dest('./')).on('end', function() {
+            git.status({
+              args: '--porcelain'
+            }, function(err, stdout) {
+              if (err) {
+                throw err;
+              }
+
+              if (stdout && stdout !== '') {
+                gulp.src('./')
+                  .pipe(git.add({
+                    args: '--all'
+                  }))
+                  .pipe(git.commit('Heroku dev version update.')).on('end', function() {
+                    git.push('origin', 'heroku', { quiet: true }, function(err) {
+                      if (err) {
+                        throw err;
+                      }
+
+                      process.chdir(__dirname);
+                      done();
+                    });
+                  });
+              } else {
+                console.log('No difference since last commit, skipping heroku release.');
+
+                process.chdir(__dirname);
+                done();
+              }
+            });
+          });
+        });
+      }
+    );
+  } else {
+    console.warn('Skipping release. Release:heroku task should be executed by CI only.');
+  }
+});
 
 devGulpTasks(gulp, opts);
