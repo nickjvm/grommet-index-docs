@@ -13,10 +13,10 @@ import '../scss/index.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router } from 'react-router';
-import history from './History';
+import appHistory from './AppHistory';
 import routes from './routes';
 
-history.prefix('/docs/grommet-index');
+appHistory.prefix('/docs/grommet-index');
 
 function onRouteUpdate () {
   let docElements = document.querySelectorAll('.article');
@@ -27,7 +27,7 @@ function onRouteUpdate () {
 
 let element = document.getElementById('content');
 ReactDOM.render(
-  <Router onUpdate={onRouteUpdate} routes={routes()} history={history} />,
+  <Router onUpdate={onRouteUpdate} routes={routes()} history={appHistory} />,
   element);
 
 document.body.classList.remove('loading');
