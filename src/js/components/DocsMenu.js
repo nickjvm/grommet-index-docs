@@ -19,12 +19,13 @@ export default class DocsMenu extends Component {
       <Menu direction={this.props.direction} align="start" justify="between" primary={true}>
         <Header pad={{horizontal: 'medium'}}><h3>Components</h3></Header>
         {this._renderLink("/aggregate", "Aggregate")}
-        {this._renderLink("/attribute", "Attribute")}
+        {this._renderLink("/filter", "Filter")}
         {this._renderLink("/filters", "Filters")}
         {this._renderLink("/header", "Header")}
         {this._renderLink("/history", "History")}
         {this._renderLink("/index", "Index")}
         {this._renderLink("/list", "List")}
+        {this._renderLink("/sort", "Sort")}
         {this._renderLink("/table", "Table")}
         {this._renderLink("/tiles", "Tiles")}
         {this._renderLink("/timestamp", "Timestamp")}

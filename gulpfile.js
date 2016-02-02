@@ -27,7 +27,9 @@ var opts = {
   webpack: {
     resolve: {
       root: [
-        path.resolve(__dirname, './node_modules')
+        path.resolve(__dirname, 'src/js'),
+        path.resolve(__dirname, 'src/scss'),
+        path.resolve(__dirname, 'node_modules')
       ]
     },
     module: {
@@ -50,6 +52,8 @@ var opts = {
   // devServerHost: "0.0.0.0",
   scsslint: true,
   alias: {
+    'grommet-index/scss': path.resolve(__dirname, '../grommet-index/src/scss'),
+    'grommet-index': path.resolve(__dirname, '../grommet-index/src/js'),
     'grommet/scss': path.resolve(__dirname, '../grommet/src/scss'),
     'grommet': path.resolve(__dirname, '../grommet/src/js')
   },
