@@ -12,7 +12,7 @@ addons:
 sudo: false
 cache: false
 before_script:
-- npm install -g gulp
+- npm install -g gulp@latest
 - gem install scss_lint -v 0.38.0
 script:
 - npm run build
