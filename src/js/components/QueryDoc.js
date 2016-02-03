@@ -7,8 +7,8 @@ import Query from 'grommet-index/utils/Query';
 export default class QueryDoc extends Component {
 
   render () {
-    let query = Query('(a OR b) AND (n:v OR n:w) "big deal" NOT 01:23:45:67:89:ab 2016-01-31T16:45:46Z');
-    let errorQuery = Query('a b "');
+    let query = new Query('(a OR b) AND (n:v OR n:w) "big deal" NOT 01:23:45:67:89:ab 2016-01-31T16:45:46Z');
+    let errorQuery = new Query('a b "');
 
     return (
       <DocsArticle title="Query" colorIndex="neutral-3">
@@ -30,14 +30,12 @@ export default class QueryDoc extends Component {
         <section>
           <h2>Constructor</h2>
           <dl>
-            <dt><code>(string)</code></dt>
+            <dt><code>new Query(string)</code></dt>
             <dd>Initializes a Query with the specified query string.</dd>
           </dl>
 
           <h2>Methods</h2>
           <dl>
-            <dt><code>clone ()</code></dt>
-            <dd>Returns a new Query instance identical to this one.</dd>
             <dt><code>error ()</code></dt>
             <dd>Returns a text description of any syntactical errors.</dd>
             <dt><code>set (string)</code></dt>
@@ -56,7 +54,7 @@ export default class QueryDoc extends Component {
 
         <h3>Boolean Logic</h3>
           <pre><code className="javascript">
-            {`let query = Query('${query.toString()}');\n`}
+            {`let query = new Query('${query.toString()}');\n`}
             {'query.toString();\n'}
             {'>> ' + query.toString() + "\n"}
             {'query.error();\n'}
