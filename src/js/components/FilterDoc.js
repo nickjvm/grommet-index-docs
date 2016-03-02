@@ -39,7 +39,7 @@ export default class FilterDoc extends Component {
     );
 
     const notInlineFilter = (
-      <Filter name="type" label="Software Type" inline={false}
+      <Filter name="type" label="Software Type" inline={false} exclusive={true}
         choices={[
           {label: 'Applications', value: 'applications'},
           {label: 'BIOS', value: 'bios'},
@@ -58,14 +58,34 @@ export default class FilterDoc extends Component {
 
         <section>
           <h2>Options</h2>
-          TBD
+          <dl>
+            <dt><code>choices     {"[{label: , value: }, ...]"}</code></dt>
+            <dd>Array of possible values.</dd>
+            <dt><code>exclusive   true|false</code></dt>
+            <dd>Whether to allow selecting multiple choices. Defaults
+              to <code>true</code>.</dd>
+            <dt><code>inline      true|false</code></dt>
+            <dd>Whether it should be collapsed. Defaults
+              to <code>true</code>.</dd>
+            <dt><code>label       {"{string}"}</code></dt>
+            <dd>The label for the Filter.</dd>
+            <dt><code>name        {"{string}"}</code></dt>
+            <dd>The name of the attribute or property being filtered. This
+              is used to uniquely identify the DOM elements.</dd>
+            <dt><code>onChange    {"function ([{string}, ...]) {...}"}</code></dt>
+            <dd>Function that will be called when the user makes a choice. It
+              returns an array of values, suitable for feeding back into the
+              <code>values</code> property.</dd>
+            <dt><code>values      {"[{string}, ...]"}</code></dt>
+            <dd>Array of currently set values.</dd>
+          </dl>
         </section>
 
         <section>
           <h2>Examples</h2>
 
           <Example name="Inline" code={statusFilter} />
-          <Example name="Not Inline" code={notInlineFilter} />
+          <Example name="Not Inline, exclusive" code={notInlineFilter} />
         </section>
 
       </DocsArticle>
