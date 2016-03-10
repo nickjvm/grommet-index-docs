@@ -31,15 +31,6 @@ var opts = {
         path.resolve(__dirname, 'src/scss'),
         path.resolve(__dirname, 'node_modules')
       ]
-    },
-    module: {
-      loaders: [
-        {
-          test: /develop(\/|\\).*\.htm$|design(\/|\\)[^\/]*\.htm$|design(\/|\\).*\/.*\.htm$/,
-          loader: 'babel-loader!imports?React=react,Router=react-router,Link=>Router.Link!html-jsx-loader',
-          exclude: /(node_modules|bower_components)/
-        }
-      ]
     }
   },
   sync: {

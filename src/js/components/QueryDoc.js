@@ -65,7 +65,7 @@ export default class QueryDoc extends Component {
 
           <h3>Syntax error</h3>
           <pre><code className="javascript">
-            {`let errorQuery = Query('${errorQuery.toString()}');\n`}
+            {`let errorQuery = new Query('${errorQuery.toString()}');\n`}
             {'errorQuery.toString();\n'}
             {'>> ' + errorQuery.toString() + "\n"}
             {'errorQuery.error();\n'}
