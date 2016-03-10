@@ -39,6 +39,19 @@ export default class FilterDoc extends Component {
     );
 
     const notInlineFilter = (
+      <Filter name="type" label="Software Type" inline={false}
+        choices={[
+          {label: 'Applications', value: 'applications'},
+          {label: 'BIOS', value: 'bios'},
+          {label: 'Drivers', value: 'drivers'},
+          {label: 'Firmware', value: 'firmware'},
+          {label: 'Utility', value: 'utility'}
+        ]}
+        values={this.state.typeValues}
+        onChange={this._onChangeType} />
+    );
+
+    const notInlineExclusiveFilter = (
       <Filter name="type" label="Software Type" inline={false} exclusive={true}
         choices={[
           {label: 'Applications', value: 'applications'},
@@ -85,7 +98,8 @@ export default class FilterDoc extends Component {
           <h2>Examples</h2>
 
           <Example name="Inline" code={statusFilter} />
-          <Example name="Not Inline, exclusive" code={notInlineFilter} />
+          <Example name="Not Inline" code={notInlineFilter} />
+          <Example name="Not Inline, exclusive" code={notInlineExclusiveFilter} />
         </section>
 
       </DocsArticle>
