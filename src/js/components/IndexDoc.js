@@ -25,7 +25,7 @@ export default class IndexDoc extends Component {
     this._onQuery = this._onQuery.bind(this);
     this._onFilter = this._onFilter.bind(this);
     this._onSort = this._onSort.bind(this);
-    this.state = { query: Query(''), filter: {}, sort: 'name:asc' };
+    this.state = { query: new Query(''), filter: {}, sort: 'name:asc' };
   }
 
   _onQuery (query) {

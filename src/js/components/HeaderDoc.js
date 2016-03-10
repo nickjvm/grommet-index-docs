@@ -20,7 +20,7 @@ export default class HeaderDoc extends Component {
     this._onNav = this._onNav.bind(this);
     this._onAdd = this._onAdd.bind(this);
     this.state = {
-      query: Query(''),
+      query: new Query(''),
       filter: {},
       sort: 'name:asc'
     };
@@ -53,8 +53,8 @@ export default class HeaderDoc extends Component {
         query={this.state.query} onQuery={this._onQuery}
         filter={this.state.filter} onFilter={this._onFilter}
         sort={this.state.sort} onSort={this._onSort}
-        navControl={<Button type="icon" onClick={this._onNav}><GrommetLogo /></Button>}
-        addControl={<Button type="icon" onClick={this._onAdd}><AddIcon /></Button>} />
+        navControl={<Button plain={true} onClick={this._onNav}><GrommetLogo /></Button>}
+        addControl={<Button icon={<AddIcon />} onClick={this._onAdd} />} />
     );
 
     return (

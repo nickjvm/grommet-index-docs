@@ -61,7 +61,7 @@ export default class Docs extends Component {
     var closer;
     if ('single' === this.state.responsive) {
       closer = (
-        <Button type="icon" onClick={this._onMenuClick}><CloseIcon /></Button>
+        <Button icon={<CloseIcon />} onClick={this._onMenuClick} />
       );
     }
     return (
