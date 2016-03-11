@@ -1,10 +1,13 @@
-// (C) Copyright 2014-2015 Hewlett Packard Enterprise Development LP
+// (C) Copyright 2014-2016 Hewlett Packard Enterprise Development LP
 
 import React, { Component } from 'react';
 import DocsArticle from './DocsArticle';
 import Example from './Example';
 import Filters from 'grommet-index/components/Filters';
 import attributes from '../attributes';
+
+// So Example has something useful to display
+Filters.displayName = 'Filters';
 
 export default class FiltersDoc extends Component {
 

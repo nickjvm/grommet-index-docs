@@ -1,4 +1,4 @@
-// (C) Copyright 2014-2015 Hewlett Packard Enterprise Development LP
+// (C) Copyright 2014-2016 Hewlett Packard Enterprise Development LP
 
 import React, { Component } from 'react';
 import DocsArticle from './DocsArticle';
@@ -7,6 +7,8 @@ import Index from 'grommet-index/components/Index';
 import Query from 'grommet-index/utils/Query';
 import attributes from '../attributes';
 import result from '../result';
+
+Index.displayName = 'Index';
 
 let annotatedAttributes = attributes.map(attribute => {
   let attr = { ...attribute };

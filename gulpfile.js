@@ -50,6 +50,9 @@ var opts = {
   },
   devPreprocess: [
     'set-webpack-alias'
+  ],
+  distPreprocess: [
+    'set-webpack-alias'
   ]
 };
 

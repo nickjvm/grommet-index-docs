@@ -1,9 +1,12 @@
-// (C) Copyright 2014-2015 Hewlett Packard Enterprise Development LP
+// (C) Copyright 2014-2016 Hewlett Packard Enterprise Development LP
 
 import React, { Component } from 'react';
 import DocsArticle from './DocsArticle';
 import Example from './Example';
 import Sort from 'grommet-index/components/Sort';
+
+// So Example has something useful to display
+Sort.displayName = 'Sort';
 
 export default class SortDoc extends Component {
 

@@ -1,4 +1,4 @@
-// (C) Copyright 2014-2015 Hewlett Packard Enterprise Development LP
+// (C) Copyright 2014-2016 Hewlett Packard Enterprise Development LP
 
 import React, { Component } from 'react';
 import DocsArticle from './DocsArticle';
@@ -9,6 +9,9 @@ import Button from 'grommet/components/Button';
 import GrommetLogo from 'grommet/components/icons/Grommet';
 import AddIcon from 'grommet/components/icons/base/Add';
 import attributes from '../attributes';
+
+// So Example has something useful to display
+Header.displayName = 'Header';
 
 export default class HeaderDoc extends Component {
 
