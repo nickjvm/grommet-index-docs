@@ -1,4 +1,4 @@
-// (C) Copyright 2014-2015 Hewlett Packard Enterprise Development LP
+// (C) Copyright 2014-2016 Hewlett Packard Enterprise Development LP
 
 import React, { Component } from 'react';
 import DocsArticle from './DocsArticle';
@@ -6,6 +6,9 @@ import Example from './Example';
 import Table from 'grommet-index/components/Table';
 import attributes from '../attributes';
 import result from '../result';
+
+// So Example has something useful to display
+Table.displayName = 'Table';
 
 let annotatedAttributes = attributes.map(attribute => {
   let attr = { ...attribute };

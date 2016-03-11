@@ -1,9 +1,12 @@
-// (C) Copyright 2014-2015 Hewlett Packard Enterprise Development LP
+// (C) Copyright 2014-2016 Hewlett Packard Enterprise Development LP
 
 import React, { Component } from 'react';
 import DocsArticle from './DocsArticle';
 import Example from './Example';
 import Timestamp from 'grommet-index/components/Timestamp';
+
+// So Example has something useful to display
+Timestamp.displayName = 'Timestamp';
 
 export default class TimestampDoc extends Component {
 
