@@ -39,7 +39,6 @@ var opts = {
     remoteDestination: '/var/www/html/docs/grommet-index-docs/dist'
   },
   devServerPort: 8019,
-  devServerDisableHot: true,
   // devServerHost: "0.0.0.0",
   scsslint: true,
   alias: {
