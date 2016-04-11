@@ -1,64 +1,17 @@
-// (C) Copyright 2014-2015 Hewlett Packard Enterprise Development LP
+// (C) Copyright 2014-2016 Hewlett Packard Enterprise Development LP
 
-var argv = require('yargs').argv;
-var gulp = require('gulp');
-var path = require('path');
-var del = require('del');
-var git = require('gulp-git');
-var mkdirp = require('mkdirp');
-var devGulpTasks = require('grommet/utils/gulp/gulp-tasks');
-
-var opts = {
-  base: '.',
-  publicPath: 'docs/grommet-index',
-  dist: path.resolve(__dirname, 'dist/'),
-  copyAssets: [
-    'src/index.html',
-    'src/robots.txt',
-    {
-      asset: 'node_modules/grommet/img/**',
-      dist: 'dist/img/'
-    }
-  ],
-  scssAssets: ['src/scss/**/*.scss'],
-  jsAssets: ['src/**/*.js'],
-  mainJs: 'src/js/index.js',
-  mainScss: 'src/scss/index.scss',
-  webpack: {
-    resolve: {
-      root: [
-        path.resolve(__dirname, 'src/js'),
-        path.resolve(__dirname, 'src/scss'),
-        path.resolve(__dirname, 'node_modules')
-      ]
-    }
-  },
-  sync: {
-    hostname: 'grommet.us.rdlabs.hpecorp.net',
-    username: 'ligo',
-    remoteDestination: '/var/www/html/docs/grommet-index-docs/dist'
-  },
-  devServerPort: 8019,
-  // devServerHost: "0.0.0.0",
-  scsslint: true,
-  alias: {
-    'grommet-index/scss': path.resolve(__dirname, '../grommet-index/src/scss'),
-    'grommet-index': path.resolve(__dirname, '../grommet-index/src/js'),
-    'grommet/scss': path.resolve(__dirname, '../grommet/src/scss'),
-    'grommet': path.resolve(__dirname, '../grommet/src/js')
-  },
-  devPreprocess: [
-    'set-webpack-alias'
-  ],
-  distPreprocess: [
-    'set-webpack-alias'
-  ]
-};
+import { argv } from 'yargs';
+import gulp from 'gulp';
+import del from 'del';
+import git from 'gulp-git';
+import mkdirp from 'mkdirp';
+import grommetToolbox, { getOptions } from 'grommet-toolbox';
 
 gulp.task('set-webpack-alias', function () {
-  if (opts.alias && argv.useAlias) {
+  const options = getOptions();
+  if (options.alias && argv.useAlias) {
     console.log('Using local alias for development.');
-    opts.webpack.resolve.alias = opts.alias;
+    options.webpack.resolve.alias = options.alias;
   }
 });
 
@@ -132,4 +85,4 @@ gulp.task('release:heroku', ['dist', 'release:createTmp'], function(done) {
   }
 });
 
-devGulpTasks(gulp, opts);
+grommetToolbox(gulp);
