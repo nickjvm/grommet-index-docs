@@ -6,7 +6,7 @@ import Example from './Example';
 import Index from 'grommet-index/components/Index';
 import Query from 'grommet-index/utils/Query';
 import attributes from '../attributes';
-import result from '../result';
+import result, {sectionResult, Actions} from '../result';
 
 Index.displayName = 'Index';
 
@@ -44,18 +44,26 @@ export default class IndexDoc extends Component {
 
   render () {
     let example = (
-      <Index label="Items" attributes={annotatedAttributes} result={result}
+      <Index actions={<Actions/>} label="Items" attributes={annotatedAttributes} result={result}
         query={this.state.query} onQuery={this._onQuery}
         filter={this.state.filter} onFilter={this._onFilter}
-        sort={this.state.sort} onSort={this._onSort}
+        sort="cpuCount:asc" onSort={this._onSort}
         fixed={false} />
     );
-
+    
+    let sections = (
+      <Index label="Items" attributes={annotatedAttributes} result={sectionResult}
+        query={this.state.query} onQuery={this._onQuery}
+        filter={this.state.filter} onFilter={this._onFilter}
+        sort="cpuCount:asc" onSort={this._onSort}
+        fixed={false} />
+    );
+  
     return (
       <DocsArticle title="Index" colorIndex="neutral-3">
 
         <p>Combines index header and one of the result formats.</p>
-
+   
         <section>
           <h2>Options</h2>
           TBD
@@ -64,6 +72,11 @@ export default class IndexDoc extends Component {
         <section>
           <h2>Example</h2>
           <Example code={example} />
+        </section>
+
+        <section>
+          <h2>Example with sections</h2>
+          <Example code={sections} />
         </section>
 
       </DocsArticle>
